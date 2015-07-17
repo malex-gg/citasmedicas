@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+    
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+    </global-forwards>
+
+    <action-mappings>
+        <action path="/registrarpaciente" type="com.citasmedicasv2.struts.RegistrarPacienteAction">
+            <forward name="success" path="/indexAdmin.jsp"/>
+            <forward name="bad" path="/RegistrarPaciente.jsp"/>
+        </action>
+        <action path="/registrarmedico" type="com.citasmedicasv2.struts.RegistrarMedicoAction">
+            <forward name="success" path="/indexAdmin.jsp"/>
+            <forward name="bad" path="/RegistrarMedico.jsp"/>
+        </action>
+        <action path="/reservacitas" type="com.citasmedicasv2.struts.ReservaCitasAction">
+            <forward name="success" path="/indexAdmin.jsp"/>
+            <forward name="exists" path="/CitaYaReservada.jsp"/>
+            <forward name="bad" path="/CitaYaReservada.jsp"/>
+        </action>
+        <action path="/registrarhistorial" type="com.citasmedicasv2.struts.RegistrarHistorialAction">
+            <forward name="success" path="/indexAdmin.jsp"/>
+            <forward name="bad" path="/RegistrarHistorial.jsp"/>
+        </action>
+        <action path="/buscarpaciente" type="com.citasmedicasv2.struts.BuscarPacienteAction">
+            <forward name="success" path="/VisualizarPaciente.jsp"/>
+            <forward name="bad" path="/BuscarPaciente.jsp"/>
+        </action>
+        <action path="/buscarmedico" type="com.citasmedicasv2.struts.BuscarMedicoAction">
+            <forward name="success" path="/VisualizarMedico.jsp"/>
+            <forward name="bad" path="/BuscarMedico.jsp"/>
+        </action>
+        <action path="/buscarcita" type="com.citasmedicasv2.struts.BuscarCitaAction">
+            <forward name="success" path="/VisualizarCitas.jsp"/>
+            <forward name="bad" path="/BusquedaCitas.jsp"/>
+        </action>
+        <action path="/buscarhistorial" type="com.citasmedicasv2.struts.BuscarHistorialAction">
+            <forward name="success" path="/VisualizarHistorial.jsp"/>
+            <forward name="bad" path="/BuscarHistorial.jsp"/>
+        </action>
+        <action path="/eliminarcita" type="com.citasmedicasv2.struts.EliminarCitaAction">
+            <forward name="success" path="/VisualizarCita.jsp"/>
+            <forward name="bad" path="/EliminarCita.jsp"/>
+        </action>
+        <action path="/eliminarmedico" type="com.citasmedicasv2.struts.EliminarMedicoAction">
+            <forward name="success" path="/VisualizarMedico.jsp"/>
+            <forward name="bad" path="/EliminarMedico.jsp"/>
+        </action>
+        <action path="/eliminarhistorial" type="com.citasmedicasv2.struts.EliminarHistorialAction">
+            <forward name="success" path="/VisualizarHistorial.jsp"/>
+            <forward name="bad" path="/EliminarHistorial.jsp"/>
+        </action>
+        <action path="/eliminarpaciente" type="com.citasmedicasv2.struts.EliminarPacienteAction">
+            <forward name="success" path="/VisualizarPaciente.jsp"/>
+            <forward name="bad" path="/EliminarPaciente.jsp"/>
+        </action>
+        <action path="/loginadmin" type="com.citasmedicasv2.struts.LoginAdminAction">
+            <forward name="success" path="/indexAdmin.jsp"/>
+            <forward name="bad" path="/LoginAdministrador.jsp"/>
+        </action>
+        <action path="/actualizarhistorial" type="com.citasmedicasv2.struts.ActualizarHistorialAction">
+            <forward name="success" path="/indexAdmin.jsp"/>
+            <forward name="bad" path="/ActualizarHistorial.jsp"/>
+        </action>
+        <action path="/actualizarcita" type="com.citasmedicasv2.struts.ActualizarCitaAction">
+            <forward name="success" path="/indexAdmin.jsp"/>
+            <forward name="bad" path="/ActualizarCita.jsp"/>
+        </action>
+        <action path="/actualizarmedico" type="com.citasmedicasv2.struts.ActualizarMedicoAction">
+            <forward name="success" path="/indexAdmin.jsp"/>
+            <forward name="bad" path="/ActualizarMedico.jsp"/>
+        </action>
+        <action path="/actualizarpaciente" type="com.citasmedicasv2.struts.ActualizarPacienteAction">
+            <forward name="success" path="/indexAdmin.jsp"/>
+            <forward name="bad" path="/ActualizarPaciente.jsp"/>
+        </action>
+        <action path="/loginusuario" type="com.citasmedicasv2.struts.LoginUsuarioAction">
+            <forward name="success" path="/indexUsuario.jsp"/>
+            <forward name="bad" path="/LoginUsuario.jsp"/>
+        </action>
+        <action path="/loginmedico" type="com.citasmedicasv2.struts.LoginMedicoAction">
+            <forward name="success" path="/indexMedico.jsp"/>
+            <forward name="bad" path="/LoginMedico.jsp"/>
+        </action>
+        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+    </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>
